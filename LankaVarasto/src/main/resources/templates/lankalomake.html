@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Car form</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Lanka</h1>
+	<form method="post" action="#" th:action="@{/tallennalanka}"  th:object= ${lanka} >
+	<p>Nimi: <input type="text" th:field="${lanka.nimi}" /></p>
+	<p>Valmistaja: <input type="text" th:field="${lanka.valmistaja}" /></p>
+	<p>Valmistaja: <input type="text" th:field="${lanka.paino}" /></p>
+	<p>Valmistaja: <input type="text" th:field="${lanka.vari}" /></p>
+	<p>Valmistaja: <input type="text" th:field="${lanka.maara}" /></p>
+	<input type="submit" value="Submit" /> <input type="reset" value="Reset" />
+	</form>
+    
+</body>
+</html>

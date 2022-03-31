@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Lankalista</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Langat</h1>
+	<table>
+		<tr>
+			<th>Nimi</th>
+			<th>Valmistaja</th>
+			<th>Paino</th>
+			<th>Väri</th>
+			<th>Määrä</th>
+		</tr>
+
+		<tr th:each="lanka : ${langat}">
+			<td th:text="${lanka.nimi}">nimi</td>
+			<td th:text="${lanka.valmistaja}">nimi</td>
+			<td th:text="${lanka.paino}">nimi</td>
+			<td th:text="${lanka.vari}">nimi</td>
+			<td th:text="${lanka.maara}">nimi</td>
+			
+		</tr>
+	</table>
+</body>
+</html>
