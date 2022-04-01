@@ -1,8 +1,8 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>Lankalista</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Lankalista</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
 	<h1>Langat</h1>
@@ -18,11 +18,12 @@
 		<tr th:each="lanka : ${langat}">
 			<td th:text="${lanka.nimi}">nimi</td>
 			<td th:text="${lanka.valmistaja}">valmistaja</td>
-			<td th:text="${lanka.paino}">paino</td>
+			<td th:text="${lanka.paino} + g">paino</td>
 			<td th:text="${lanka.vari}">väri</td>
-			<td th:text="${lanka.maara}">määrä</td>
-			
+			<td th:text="${lanka.maara} + kpl">määrä</td>
+			<td><a th:href="@{/delete/{id}(id=${lanka.id})}">Delete</a></td>
 		</tr>
 	</table>
+	<a href="/add">Lisää lanka</a>
 </body>
 </html>

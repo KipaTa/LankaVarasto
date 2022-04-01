@@ -1,19 +1,32 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Car form</title>
+    <title>Lankalomake</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
 	<h1>Lanka</h1>
-	<form method="post" action="#" th:action="@{/tallennalanka}"  th:object= ${lanka} >
-	<p>Nimi: <input type="text" th:field="${lanka.nimi}" /></p>
-	<p>Valmistaja: <input type="text" th:field="${lanka.valmistaja}" /></p>
-	<p>Paino: <input type="text" th:field="${lanka.paino}" /></p>
-	<p>Väri: <input type="text" th:field="${lanka.vari}" /></p>
-	<p>Määrä: <input type="text" th:field="${lanka.maara}" /></p>
-	<input type="submit" value="Submit" /> <input type="reset" value="Reset" />
-	</form>
-    
+	<div>
+		<form method="post" action="#" th:action="@{/save}" th:object= ${lanka} >
+				
+			<label for="nimi">Nimi</label>
+			<input type="text" id="nimi" th:field="*{nimi}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+		  	<label for="valmistaja">Valmistaja</label>
+			<input type="text" id="valmistaja" th:field="*{valmistaja}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+		  	<label for="paino">Paino</label>
+			<input type="text" id="paino" th:field="*{paino}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<label for="vari">Väri</label>
+			<input type="text" id="vari" th:field="*{vari}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<label for="maara">Määrä</label>
+			<input type="text" id="maara" th:field="*{maara}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			
+			<input type="submit" value="Save" /> 
+		</form>
+    </div>
 </body>
 </html>

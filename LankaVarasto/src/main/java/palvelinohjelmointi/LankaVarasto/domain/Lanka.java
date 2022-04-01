@@ -1,6 +1,15 @@
 package palvelinohjelmointi.LankaVarasto.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Lanka {
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private Long id;
 	private String nimi;
 	private String valmistaja;
 	private int paino;
@@ -8,7 +17,7 @@ public class Lanka {
 	private Double maara;
 	
 	public Lanka() {
-		super();
+	
 	}
 
 	public Lanka(String nimi, String valmistaja, int paino, String vari, Double maara) {
@@ -18,6 +27,14 @@ public class Lanka {
 		this.paino = paino;
 		this.vari = vari;
 		this.maara = maara;
+	}
+	
+	public Long getId() {
+		return id;
+	}
+	
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getNimi() {
@@ -62,7 +79,7 @@ public class Lanka {
 
 	@Override
 	public String toString() {
-		return "Lanka [nimi=" + nimi + ", valmistaja=" + valmistaja + ", paino=" + paino + ", vari=" + vari + ", maara="
+		return "Lanka [id=" + id + ", nimi=" + nimi + ", valmistaja=" + valmistaja + ", paino=" + paino + ", vari=" + vari + ", maara="
 				+ maara + "]";
 	}
 	
