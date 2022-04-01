@@ -9,9 +9,9 @@
 	<form method="post" action="#" th:action="@{/tallennalanka}"  th:object= ${lanka} >
 	<p>Nimi: <input type="text" th:field="${lanka.nimi}" /></p>
 	<p>Valmistaja: <input type="text" th:field="${lanka.valmistaja}" /></p>
-	<p>Valmistaja: <input type="text" th:field="${lanka.paino}" /></p>
-	<p>Valmistaja: <input type="text" th:field="${lanka.vari}" /></p>
-	<p>Valmistaja: <input type="text" th:field="${lanka.maara}" /></p>
+	<p>Paino: <input type="text" th:field="${lanka.paino}" /></p>
+	<p>Väri: <input type="text" th:field="${lanka.vari}" /></p>
+	<p>Määrä: <input type="text" th:field="${lanka.maara}" /></p>
 	<input type="submit" value="Submit" /> <input type="reset" value="Reset" />
 	</form>
     
