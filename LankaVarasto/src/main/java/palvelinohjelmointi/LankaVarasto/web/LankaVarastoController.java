@@ -42,4 +42,10 @@ public class LankaVarastoController {
 			lrepository.deleteById(id);
 			return "redirect:../lankalista";
 		}
+		
+		@RequestMapping(value = "/edit/{id}")
+			public String editLanka(@PathVariable("id") Long id, Model model) {
+			model.addAttribute("lanka", lrepository.findById(id));
+			return "editlanka";
+		}
 }

@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit lanka</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Edit lanka</h1>
+	<div>
+		<form th:object="${lanka}" th:action="@{/save}" action="#" method="post">
+			
+			<input type="hidden" th:field="*{id}" class="form-control"/>
+			
+			<div class="form-group">
+				<label for="nimi">Nimi</label>
+				<input class="form-control" type="text" th:field="*{nimi}" />
+			</div>
+			
+			<div class="form-group">
+				<label for="valmistaja">Valmistaja</label>
+				<input class="form-control" type="text" th:field="*{valmistaja}" />
+			</div>
+						
+			<div class="form-group">
+				<label for="paino">Paino</label>
+				<input class="form-control" type="text" th:field="*{paino}" />
+			</div>
+			
+			<div class="form-group">
+				<label for="vari">Väri</label>
+				<input class="form-control" type="text" th:field="*{vari}" />
+			</div>
+			
+			<div class="form-group">
+				<label for="maara">Määrä</label>
+				<input class="form-control" type="text" th:field="*{maara}" />
+			</div>
+			
+			<input type="submit" value="Edit save"></input>
+		</form>
+	</div>
+</body>
+</html>
