@@ -12,14 +12,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import palvelinohjelmointi.LankaVarasto.domain.Lanka;
 import palvelinohjelmointi.LankaVarasto.domain.LankaRepository;
+import palvelinohjelmointi.LankaVarasto.domain.MateriaaliRepository;
 
 @Controller
 public class LankaVarastoController {
 	
 		@Autowired
 		private LankaRepository lrepository;
+		@Autowired
+		private MateriaaliRepository mrepository;
 
-		@RequestMapping(value = "/lankalista", method = RequestMethod.GET)
+		@RequestMapping(value = {"/", "/lankalista"}, method = RequestMethod.GET)
 		public String getLangat(Model model) {
 			model.addAttribute("langat", lrepository.findAll());
 			return "lankalista";
@@ -28,6 +31,7 @@ public class LankaVarastoController {
 		@RequestMapping(value = "/add", method = RequestMethod.GET)
 		public String addLanka(Model model) {
 			model.addAttribute("lanka", new Lanka());
+			model.addAttribute("materiaalit", mrepository.findAll());
 			return "lankalomake";
 		}
 		

@@ -11,6 +11,7 @@
 		<tr>
 			<th>Nimi</th>
 			<th>Valmistaja</th>
+			<th>Materiaali</th>
 			<th>Paino</th>
 			<th>Väri</th>
 			<th>Määrä</th>
@@ -19,9 +20,11 @@
 		<tr th:each="lanka : ${langat}">
 			<td th:text="${lanka.nimi}">nimi</td>
 			<td th:text="${lanka.valmistaja}">valmistaja</td>
+			<td th:text="${lanka.materiaali.mNimi}"></td>
 			<td th:text="${lanka.paino} + g">paino</td>
 			<td th:text="${lanka.vari}">väri</td>
 			<td th:text="${lanka.maara} + kpl">määrä</td>
+			
 			<td><a class="btn btn-success" th:href="@{/edit/{id}(id=${lanka.id})}">Edit</a></td>
 			<td><a th:href="@{/delete/{id}(id=${lanka.id})}" class="btn btn-xs btn-danger">Delete</a></td>
 		</tr>
