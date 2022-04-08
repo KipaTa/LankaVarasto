@@ -18,7 +18,7 @@ public class Lanka {
 	private String valmistaja;
 	private int paino;
 	private String vari;
-	private Double maara;
+	private double maara;
 	
 	@ManyToOne
 	@JsonIgnoreProperties ("langat")
@@ -29,7 +29,7 @@ public class Lanka {
 	
 	}
 
-	public Lanka(String nimi, String valmistaja, int paino, String vari, Double maara, Materiaali materiaali) {
+	public Lanka(String nimi, String valmistaja, int paino, String vari, double maara, Materiaali materiaali) {
 		super();
 		this.nimi = nimi;
 		this.valmistaja = valmistaja;
@@ -79,11 +79,11 @@ public class Lanka {
 		this.vari = vari;
 	}
 
-	public Double getMaara() {
+	public double getMaara() {
 		return maara;
 	}
 
-	public void setMaara(Double maara) {
+	public void setMaara(double maara) {
 		this.maara = maara;
 	}
 	

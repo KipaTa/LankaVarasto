@@ -7,10 +7,13 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+
 import palvelinohjelmointi.LankaVarasto.domain.Lanka;
 import palvelinohjelmointi.LankaVarasto.domain.LankaRepository;
 import palvelinohjelmointi.LankaVarasto.domain.Materiaali;
 import palvelinohjelmointi.LankaVarasto.domain.MateriaaliRepository;
+import palvelinohjelmointi.LankaVarasto.domain.User;
+import palvelinohjelmointi.LankaVarasto.domain.UserRepository;
 
 @SpringBootApplication
 public class LankaVarastoApplication {
@@ -21,7 +24,7 @@ public class LankaVarastoApplication {
 	}
 	
 	@Bean
-	public CommandLineRunner lankaDemo(LankaRepository lrepository, MateriaaliRepository mrepository) {
+	public CommandLineRunner lankaDemo(LankaRepository lrepository, MateriaaliRepository mrepository, UserRepository urepository) {
 		return (args) -> {
 				
 			log.info("lisää pari lankaa");
@@ -34,6 +37,12 @@ public class LankaVarastoApplication {
 			
 			lrepository.save(new Lanka("Nalle", "Novita", 200, "musta", 1.0, materiaali2));
 			lrepository.save(new Lanka("Seitsemän veljestä", "Novita", 500, "punainen", 2.0, materiaali2));
+			
+			User userA = new User("visitor", "$2a$10$CNtWfYa4H23FSGxh55eC/exvoJWXvej74l31akkhf6FSOjo9w8W0e", "VISITOR");
+			User userB = new User("admin", "$2a$10$YQoLOzyX1auv9/GydM4IA.lJBzn2wK65hrDPq2LLRI9us1GNEHhhC", "ADMIN");
+			urepository.save(userA);
+			urepository.save(userB);
+			
 			
 			log.info("hae kaikki langat");
 			for (Lanka lanka : lrepository.findAll()) {

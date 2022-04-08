@@ -3,11 +3,24 @@
 <head>
 	<title>Lankalista</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
+	<link type="text/css" rel="stylesheet" href="css/styles.css" th:href="@{css/styles.css}" />
 </head>
 <body>
-	<h1>Langat</h1>
-	<table class="table">
+	<h1>Tervetuloa lankavarastoon!</h1>
+	<h2>LANGAT</h2>
+	<input id="myInput" type="text" placeholder="Etsi">
+	<table class="center">
 		<tr>
 			<th>Nimi</th>
 			<th>Valmistaja</th>
@@ -15,8 +28,10 @@
 			<th>Paino</th>
 			<th>Väri</th>
 			<th>Määrä</th>
+			<th></th>
+			<th></th>
 		</tr>
-
+		<tbody id="myTable">
 		<tr th:each="lanka : ${langat}">
 			<td th:text="${lanka.nimi}">nimi</td>
 			<td th:text="${lanka.valmistaja}">valmistaja</td>
@@ -24,11 +39,14 @@
 			<td th:text="${lanka.paino} + g">paino</td>
 			<td th:text="${lanka.vari}">väri</td>
 			<td th:text="${lanka.maara} + kpl">määrä</td>
-			
-			<td><a class="btn btn-success" th:href="@{/edit/{id}(id=${lanka.id})}">Edit</a></td>
-			<td><a th:href="@{/delete/{id}(id=${lanka.id})}" class="btn btn-xs btn-danger">Delete</a></td>
+	
+			<td><a class="btn btn-success" th:href="@{/edit/{id}(id=${lanka.id})}"><button>Edit</button></a></td>
+			<td><a th:href="@{/delete/{id}(id=${lanka.id})}" class="btn btn-xs btn-danger"><button>Delete</button></a></td>
+		</tbody>
 		</tr>
 	</table>
-	<a href="/add" class="btn btn-success">Lisää lanka</a>
+	<div class="container">
+	<a href="/add" class="btn btn-success"><button>Lisää lanka</button></a>
+	</div>
 </body>
 </html>

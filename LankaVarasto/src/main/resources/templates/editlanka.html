@@ -3,9 +3,10 @@
 <head>
     <title>Edit lanka</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link type="text/css" rel="stylesheet" href="css/styles.css" th:href="@{css/styles.css}"/>
 </head>
 <body>
-	<h1>Edit lanka</h1>
+	<h1>Muuta langan tietoja:</h1>
 	<div>
 		<form th:object="${lanka}" th:action="@{/save}" action="#" method="post">
 			
@@ -24,7 +25,15 @@
 				<div class="form-group">
 				<label for="materiaali">Materiaali</label>
 				<input class="form-control" type="text" th:field="*{materiaali.mNimi}" />
-			</div>		
+			</div>
+			
+			<div>
+				<label for="materiaalilista">Materiaali</label>
+			 	<select id="materiaalilista" th:field="*{materiaali}" class="form-control">
+       			<option th:each="materiaali: ${materiaalit}" th:value="${materiaali.id}" th:text="${materiaali.mNimi}"></option>
+    		</select>
+		
+			</div>	
 						
 			<div class="form-group">
 				<label for="paino">Paino</label>
