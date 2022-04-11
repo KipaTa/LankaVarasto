@@ -18,12 +18,20 @@
 </head>
 <body>
 	<div class="header">
-	<h1>Tervetuloa lankavarastoon!</h1>
+	<h1 th:inline="text">Tervetuloa lankavarastoon [[${#httpServletRequest.remoteUser}]]!</h1>
+	
 	</div>
+	<div class="col-md-4" style="padding:20px 0">
+		<form th:action="@{/logout}" method="post">
+			<input type="submit" value="Log Out" />
+		</form>
+	</div>	
 	<h2>LANGAT</h2>
 	<div class="container">
 		<input id="myInput" type="text" placeholder="Etsi">
 	</div>
+	
+	
 	
 	<table class="center">
 		<tr>
@@ -33,8 +41,8 @@
 			<th>Paino</th>
 			<th>Väri</th>
 			<th>Määrä</th>
-			<th></th>
-			<th></th>
+			<th sec:authorize="hasAuthority('ADMIN')"> </th>
+			<th sec:authorize="hasAuthority('ADMIN')"> </th>
 		</tr>
 		<tbody id="myTable">
 		<tr th:each="lanka : ${langat}">
@@ -45,13 +53,13 @@
 			<td th:text="${lanka.vari}">väri</td>
 			<td th:text="${lanka.maara} + kpl">määrä</td>
 	
-			<td><a class="btn btn-success" th:href="@{/edit/{id}(id=${lanka.id})}"><button>Muokkaa</button></a></td>
-			<td><a th:href="@{/delete/{id}(id=${lanka.id})}" class="btn btn-xs btn-danger"><button>Poista</button></a></td>
+			<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/edit/{id}(id=${lanka.id})}"><button>Muokkaa</button></a></td>
+			<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/delete/{id}(id=${lanka.id})}" ><button>Poista</button></a></td>
 		</tr>
 		</tbody>
 	</table>
 	<div class="container">
-	<a href="/add" class="btn btn-success"><button>Lisää lanka</button></a>
+	<a href="/add" ><button>Lisää lanka</button></a>
 	</div>
 </body>
 </html>

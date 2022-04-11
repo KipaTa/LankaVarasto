@@ -3,6 +3,7 @@ package palvelinohjelmointi.LankaVarasto.web;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
@@ -42,12 +43,14 @@ public class LankaVarastoController {
 		}
 		
 		@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+		@PreAuthorize("hasAuthority('ADMIN')")
 		public String deleteLanka(@PathVariable("id") Long id, Model model) {
 			lrepository.deleteById(id);
 			return "redirect:../lankalista";
 		}
 		
 		@RequestMapping(value = "/edit/{id}")
+		@PreAuthorize("hasAuthority('ADMIN')")
 			public String editLanka(@PathVariable("id") Long id, Model model) {
 			model.addAttribute("lanka", lrepository.findById(id));
 			model.addAttribute("materiaali", mrepository.findAll());

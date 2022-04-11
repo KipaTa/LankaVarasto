@@ -57,6 +57,12 @@ button {
   border-radius: 12px;
 }
 
+input[type=submit] {
+    background-color: red;
+	border-radius: 12px;
+	padding: 5px 10px;
+	font-weight: bold;
+}
 
 
   
