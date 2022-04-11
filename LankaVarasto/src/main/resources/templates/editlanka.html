@@ -3,11 +3,11 @@
 <head>
     <title>Edit lanka</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link type="text/css" rel="stylesheet" href="css/styles.css" th:href="@{css/styles.css}"/>
+    <link type="text/css" rel="stylesheet" href="/css/styles.css" th:href="@{/css/styles.css}" />
 </head>
 <body>
 	<h1>Muuta langan tietoja:</h1>
-	<div>
+	<div class="container">
 		<form th:object="${lanka}" th:action="@{/save}" action="#" method="post">
 			
 			<input type="hidden" th:field="*{id}" class="form-control"/>
@@ -22,17 +22,11 @@
 				<input class="form-control" type="text" th:field="*{valmistaja}" />
 			</div>
 			
-				<div class="form-group">
-				<label for="materiaali">Materiaali</label>
-				<input class="form-control" type="text" th:field="*{materiaali.mNimi}" />
-			</div>
-			
-			<div>
+			<div class="form-group">
 				<label for="materiaalilista">Materiaali</label>
-			 	<select id="materiaalilista" th:field="*{materiaali}" class="form-control">
+			 		<select id="materiaalilista" th:field="*{materiaali}" class="form-control">
        			<option th:each="materiaali: ${materiaalit}" th:value="${materiaali.id}" th:text="${materiaali.mNimi}"></option>
-    		</select>
-		
+    			</select>
 			</div>	
 						
 			<div class="form-group">
@@ -50,7 +44,7 @@
 				<input class="form-control" type="text" th:field="*{maara}" />
 			</div>
 			
-			<input type="submit" value="Edit save"></input>
+			<input type="submit" value="Tallenna"></input>
 		</form>
 	</div>
 </body>

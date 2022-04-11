@@ -13,20 +13,25 @@
 			<label for="nimi">Nimi</label>
 			<input type="text" id="nimi" th:field="*{nimi}" />
 			<div style="clear: both; display: block; height: 10px;"></div>
+			
 		  	<label for="valmistaja">Valmistaja</label>
 			<input type="text" id="valmistaja" th:field="*{valmistaja}" />
 			<div style="clear: both; display: block; height: 10px;"></div>
+			
 			<label for="materiaalilista">Materiaali</label>
-			 <select id="materiaalilista" th:field="*{materiaali}" class="form-control">
-       			<option th:each="materiaali: ${materiaalit}" th:value="${materiaali.id}" th:text="${materiaali.mNimi}"></option>
-    		</select>
+			 	<select id="materiaalilista" th:field="*{materiaali}" class="form-control">
+       				<option th:each="materiaali: ${materiaalit}" th:value="${materiaali.id}" th:text="${materiaali.mNimi}"></option>
+    			</select>
     		<div style="clear: both; display: block; height: 10px;"></div>
+    		
 		  	<label for="paino">Paino</label>
 			<input type="text" id="paino" th:field="*{paino}" />
 			<div style="clear: both; display: block; height: 10px;"></div>
+			
 			<label for="vari">Väri</label>
 			<input type="text" id="vari" th:field="*{vari}" />
 			<div style="clear: both; display: block; height: 10px;"></div>
+			
 			<label for="maara">Määrä</label>
 			<input type="text" id="maara" th:field="*{maara}" />
 			<div style="clear: both; display: block; height: 10px;"></div>

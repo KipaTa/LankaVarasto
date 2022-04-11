@@ -50,6 +50,7 @@ public class LankaVarastoController {
 		@RequestMapping(value = "/edit/{id}")
 			public String editLanka(@PathVariable("id") Long id, Model model) {
 			model.addAttribute("lanka", lrepository.findById(id));
+			model.addAttribute("materiaali", mrepository.findAll());
 			return "editlanka";
 		}
 }

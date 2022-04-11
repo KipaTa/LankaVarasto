@@ -5,21 +5,26 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script>
-$(document).ready(function(){
-  $("#myInput").on("keyup", function() {
-    var value = $(this).val().toLowerCase();
-    $("#myTable tr").filter(function() {
-      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-    });
-  });
-});
-</script>
+		$(document).ready(function(){
+		  $("#myInput").on("keyup", function() {
+		    var value = $(this).val().toLowerCase();
+		    $("#myTable tr").filter(function() {
+		      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+		    });
+		  });
+		});
+	</script>
 	<link type="text/css" rel="stylesheet" href="css/styles.css" th:href="@{css/styles.css}" />
 </head>
 <body>
+	<div class="header">
 	<h1>Tervetuloa lankavarastoon!</h1>
+	</div>
 	<h2>LANGAT</h2>
-	<input id="myInput" type="text" placeholder="Etsi">
+	<div class="container">
+		<input id="myInput" type="text" placeholder="Etsi">
+	</div>
+	
 	<table class="center">
 		<tr>
 			<th>Nimi</th>
@@ -35,15 +40,15 @@ $(document).ready(function(){
 		<tr th:each="lanka : ${langat}">
 			<td th:text="${lanka.nimi}">nimi</td>
 			<td th:text="${lanka.valmistaja}">valmistaja</td>
-			<td th:text="${lanka.materiaali.mNimi}"></td>
+			<td th:text="${lanka.materiaali}? ${lanka.materiaali.mNimi} : ''"></td>
 			<td th:text="${lanka.paino} + g">paino</td>
 			<td th:text="${lanka.vari}">väri</td>
 			<td th:text="${lanka.maara} + kpl">määrä</td>
 	
-			<td><a class="btn btn-success" th:href="@{/edit/{id}(id=${lanka.id})}"><button>Edit</button></a></td>
-			<td><a th:href="@{/delete/{id}(id=${lanka.id})}" class="btn btn-xs btn-danger"><button>Delete</button></a></td>
-		</tbody>
+			<td><a class="btn btn-success" th:href="@{/edit/{id}(id=${lanka.id})}"><button>Muokkaa</button></a></td>
+			<td><a th:href="@{/delete/{id}(id=${lanka.id})}" class="btn btn-xs btn-danger"><button>Poista</button></a></td>
 		</tr>
+		</tbody>
 	</table>
 	<div class="container">
 	<a href="/add" class="btn btn-success"><button>Lisää lanka</button></a>
