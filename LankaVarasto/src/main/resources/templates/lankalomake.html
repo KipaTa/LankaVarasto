@@ -11,7 +11,8 @@
 		<form method="post" action="#" th:action="@{/save}" th:object= ${lanka} >
 				
 			<label for="nimi">Nimi</label>
-			<input type="text" id="nimi" th:field="*{nimi}" />
+			<input type="text" id="nimi" th:field="*{nimi}"> Pakollinen</input>
+			<div th:if="${#fields.hasErrors('nimi')}" th:errors="*{nimi}"></div>
 			<div style="clear: both; display: block; height: 10px;"></div>
 			
 		  	<label for="valmistaja">Valmistaja</label>
