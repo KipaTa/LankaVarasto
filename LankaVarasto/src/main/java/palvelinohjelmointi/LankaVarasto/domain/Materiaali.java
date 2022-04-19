@@ -47,6 +47,14 @@ public class Materiaali {
 		this.mNimi = mNimi;
 	}
 
+	public List<Lanka> getLangat() {
+		return langat;
+	}
+
+	public void setLangat(List<Lanka> langat) {
+		this.langat = langat;
+	}
+
 	@Override
 	public String toString() {
 		return "Materiaali [id=" + id + ", mNimi=" + mNimi + "]";
