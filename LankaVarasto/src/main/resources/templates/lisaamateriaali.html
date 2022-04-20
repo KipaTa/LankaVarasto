@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lisää materiaali</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link type="text/css" rel="stylesheet" href="css/styles.css" th:href="@{css/styles.css}" />
+</head>
+<body>
+	<h1>Lisää materiaalin tiedot:</h1>
+	<div class="container">
+		<form method="post" action="#" th:action="@{/savemateriaali}" th:object= ${materiaali} >
+				
+			<label for="mNimi">Nimi</label>
+			<input type="text" id="mNimi" th:field="*{mNimi}"/>
+			
+			<div style="clear: both; display: block; height: 10px;"></div>
+		
+			<input type="submit" value="Tallenna materiaali" /> 
+		</form>
+    </div>
+    <div class="container">
+	<a href="/materiaalilista" ><button>Palaa materiaalilistaan tallentamatta</button></a>
+	</div>
+</body>
+</html>

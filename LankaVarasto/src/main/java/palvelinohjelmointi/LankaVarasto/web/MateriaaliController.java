@@ -31,7 +31,7 @@ public class MateriaaliController {
 	@RequestMapping(value = "/addmateriaali")
 	public String addMateriaali(Model model) {
 		model.addAttribute("materiaali", new Materiaali());
-		return "";
+		return "lisaamateriaali";
 	}
 	
 	@RequestMapping(value = "/savemateriaali", method = RequestMethod.POST)
