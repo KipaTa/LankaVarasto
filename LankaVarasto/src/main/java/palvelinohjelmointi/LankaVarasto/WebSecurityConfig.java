@@ -23,7 +23,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	  @Override
 	    protected void configure(HttpSecurity http) throws Exception {
 	        http
-	        .authorizeRequests().antMatchers("/css/**").permitAll()
+	        .authorizeRequests()
+	        .antMatchers("/css/**").permitAll()
+	        .and()
+	        .authorizeRequests()
+	        .antMatchers("/h2-console/**").permitAll()
 	        .and()
 	        .authorizeRequests()
 	        .anyRequest().authenticated()
@@ -34,6 +38,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	          .and()
 	      .logout()
 	          .permitAll();
+	        http.csrf().disable();
+	        http.headers().frameOptions().disable();
+	        
 	    }
 	    
 	    @Autowired
