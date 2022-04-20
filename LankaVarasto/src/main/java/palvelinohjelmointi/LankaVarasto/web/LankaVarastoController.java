@@ -5,6 +5,7 @@ package palvelinohjelmointi.LankaVarasto.web;
 import java.util.List;
 import java.util.Optional;
 
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import palvelinohjelmointi.LankaVarasto.domain.Lanka;
 import palvelinohjelmointi.LankaVarasto.domain.LankaRepository;
 import palvelinohjelmointi.LankaVarasto.domain.MateriaaliRepository;
+
 
 @CrossOrigin
 @Controller
@@ -48,8 +50,16 @@ public class LankaVarastoController {
 		@RequestMapping(value = "/save", method = RequestMethod.POST)
 		public String saveLanka(@Valid Lanka lanka, BindingResult bindingResult) {
 			if (bindingResult.hasErrors()) {
-				// if uusi lanka, palataan langan lisäyslomakkeelle (jos id on null), else vanha lanka palataan muokkauslomakkeelle (jos id on olemassa)
-				return "lankalomake";
+				Long id = lanka.getId();
+				if (id == null) {
+					return "lankalomake";
+				}
+				else {
+					return "editlanka";
+				}
+								// if uusi lanka, palataan langan lisäyslomakkeelle (jos id on null)
+								//else vanha lanka palataan muokkauslomakkeelle (jos id on olemassa)
+				
 			} else {lrepository.save(lanka);
 			return "redirect:/lankalista";
 		}

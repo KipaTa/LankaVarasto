@@ -11,7 +11,7 @@
 		<form method="post" action="#" th:action="@{/save}" th:object= ${lanka} >
 				
 			<label for="nimi">Nimi</label>
-			<input type="text" id="nimi" th:field="*{nimi}"> Pakollinen</input>
+			<input type="text" id="nimi" th:field="*{nimi}"/>
 			<div th:if="${#fields.hasErrors('nimi')}" th:errors="*{nimi}"></div>
 			<div style="clear: both; display: block; height: 10px;"></div>
 			
@@ -40,5 +40,8 @@
 			<input type="submit" value="Save" /> 
 		</form>
     </div>
+    <div class="container">
+	<a href="/" ><button>Palaa lankalistaan tallentamatta</button></a>
+	</div>
 </body>
 </html>
