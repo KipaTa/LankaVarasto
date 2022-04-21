@@ -22,18 +22,21 @@ public class MateriaaliController {
 	@Autowired
 	private MateriaaliRepository mRepository;
 	
+	//Listaa materiaalit	
 	@RequestMapping(value = "/materiaalilista", method = RequestMethod.GET)
 	public String materiaaliLista(Model model) {
 		model.addAttribute("materiaalit", mRepository.findAll());
 		return "materiaalilista";
 	}
 	
+	// Lisää materiaalin
 	@RequestMapping(value = "/addmateriaali")
 	public String addMateriaali(Model model) {
 		model.addAttribute("materiaali", new Materiaali());
 		return "lisaamateriaali";
 	}
 	
+	//Tallentaa materiaalin 
 	@RequestMapping(value = "/savemateriaali", method = RequestMethod.POST)
 	public String save(Materiaali materiaali) {
 		mRepository.save(materiaali);

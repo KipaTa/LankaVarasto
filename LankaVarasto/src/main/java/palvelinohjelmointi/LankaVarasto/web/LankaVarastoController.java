@@ -32,13 +32,15 @@ public class LankaVarastoController {
 		private LankaRepository lrepository;
 		@Autowired
 		private MateriaaliRepository mrepository;
-
+		
+		// Listaa kaikki langat
 		@RequestMapping(value = {"/", "/lankalista"}, method = RequestMethod.GET)
 		public String getLangat(Model model) {
 			model.addAttribute("langat", lrepository.findAll());
 			return "lankalista";
 		}
 		
+		//Lisää langan
 		@RequestMapping(value = "/add", method = RequestMethod.GET)
 		public String addLanka(@Valid Lanka nimi, BindingResult bindingResult,Model model) {
 			model.addAttribute("lanka", new Lanka());
@@ -58,14 +60,13 @@ public class LankaVarastoController {
 					return "editlanka";
 				}
 								// if uusi lanka, palataan langan lisäyslomakkeelle (jos id on null)
-								//else vanha lanka palataan muokkauslomakkeelle (jos id on olemassa)
-				
+								//else vanha lanka palataan muokkauslomakkeelle (jos id on olemassa)	
 			} else {lrepository.save(lanka);
 			return "redirect:/lankalista";
 		}
 		}
 		
-		
+		// Poistaa langan id:n perusteella
 		@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
 		@PreAuthorize("hasAuthority('ADMIN')")
 		public String deleteLanka(@PathVariable("id") Long id, Model model) {
@@ -73,6 +74,7 @@ public class LankaVarastoController {
 			return "redirect:../lankalista";
 		}
 		
+		// Muokkaa lankaa id:n perusteella
 		@RequestMapping(value = "/edit/{id}")
 		@PreAuthorize("hasAuthority('ADMIN')")
 			public String editLanka(@PathVariable("id") Long id, Model model) {

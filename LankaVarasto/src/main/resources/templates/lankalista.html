@@ -23,7 +23,7 @@
 	</div>
 	<div class="col-md-4" style="padding:20px 0">
 		<form th:action="@{/logout}" method="post">
-			<input type="submit" value="Log Out" />
+			<input type="submit" value="Logging" />
 		</form>
 	</div>	
 	<h2>LANGAT</h2>
@@ -59,8 +59,8 @@
 		</tbody>
 	</table>
 	<div class="container">
-	<a href="/add" ><button>Lisää lanka</button></a>
-	<a href="/materiaalilista" ><button>Materiaalilista</button></a>
+	<a sec:authorize="hasAuthority('ADMIN')" href="/add" ><button>Lisää lanka</button></a>
+	<a sec:authorize="hasAuthority('ADMIN')" href="/materiaalilista" ><button>Materiaalilista</button></a>
 	</div>
 </body>
 </html>
