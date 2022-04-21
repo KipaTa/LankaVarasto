@@ -25,7 +25,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	        http
 	        .authorizeRequests()
 	        .antMatchers("/css/**").permitAll()
-	        .antMatchers("/", "/home**").anonymous()
+	        .antMatchers("/").anonymous()
 	        .and()
 	        .authorizeRequests()
 	        .antMatchers("/h2-console/**").permitAll()
@@ -33,14 +33,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	        .authorizeRequests()
 	        .anyRequest().authenticated()
 	        .and()
+	        .csrf().disable()
+	        .headers().frameOptions().disable()
+	        .and()
 	      .formLogin()
 	          .defaultSuccessUrl("/lankalista",true)
 	          .permitAll()
 	          .and()
 	      .logout()
 	          .permitAll();
-	        http.csrf().disable();
-	        http.headers().frameOptions().disable();
+	      
 	        
 	    }
 	    

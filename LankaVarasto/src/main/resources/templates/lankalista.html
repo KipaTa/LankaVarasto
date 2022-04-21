@@ -21,9 +21,10 @@
 	<h1 th:inline="text">Tervetuloa lankavarastoon [[${#httpServletRequest.remoteUser}]]!</h1>
 	
 	</div>
+	
 	<div class="col-md-4" style="padding:20px 0">
 		<form th:action="@{/logout}" method="post">
-			<input type="submit" value="Logging" />
+			<input type="submit" value="Log in / log out" />
 		</form>
 	</div>	
 	<h2>LANGAT</h2>
